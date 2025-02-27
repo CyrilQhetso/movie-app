@@ -1,0 +1,25 @@
+<div class="genre-filter">
+    <div class="filter-header" (click)="toggleExpand()">
+      <h3>Filter by Genre</h3>
+      <mat-icon>{{ expanded ? 'expand_less' : 'expand_more' }}</mat-icon>
+    </div>
+    
+    <div class="filter-content" [class.expanded]="expanded">
+      <div class="filter-actions">
+        <button (click)="clearFilters()" class="action-btn clear-btn">
+          <mat-icon>clear_all</mat-icon> Clear
+        </button>
+        <button (click)="selectAll()" class="action-btn select-all-btn">
+          <mat-icon>select_all</mat-icon> Select All
+        </button>
+      </div>
+      
+      <div class="genre-chips">
+        <mat-selection-list [formControl]="selectedGenres" multiple>
+          <mat-list-option *ngFor="let genre of genres" [value]="genre.id">
+            {{ genre.name }}
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,138 @@
+.genre-filter {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+    overflow: hidden;
+    
+    .filter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      cursor: pointer;
+      user-select: none;
+      
+      h3 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 500;
+      }
+      
+      mat-icon {
+        transition: transform 0.3s ease;
+      }
+    }
+    
+    .filter-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      
+      &.expanded {
+        max-height: 300px;
+        overflow-y: auto;
+      }
+      
+      .filter-actions {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 16px 12px;
+        border-bottom: 1px solid #eee;
+        
+        .action-btn {
+          display: flex;
+          align-items: center;
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-size: 14px;
+          color: #555;
+          padding: 6px 12px;
+          border-radius: 4px;
+          transition: background-color 0.2s;
+          
+          mat-icon {
+            font-size: 16px;
+            margin-right: 4px;
+          }
+          
+          &:hover {
+            background-color: #f5f5f5;
+          }
+          
+          &.clear-btn:hover {
+            color: #f44336;
+          }
+          
+          &.select-all-btn:hover {
+            color: #2196F3;
+          }
+        }
+      }
+      
+      .genre-chips {
+        padding: 16px;
+        
+        mat-selection-list {
+          display: flex;
+          flex-wrap: wrap;
+          padding: 0;
+          
+          mat-list-option {
+            width: auto;
+            margin: 4px;
+            background-color: #f5f5f5;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: background-color 0.2s;
+            
+            &.mat-list-item-selected {
+              background-color: #2196F3;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  /* Dark mode styles */
+  @media (prefers-color-scheme: dark) {
+    .genre-filter {
+      background-color: #2a2a2a;
+      
+      .filter-header {
+        h3 {
+          color: #f0f0f0;
+        }
+        
+        mat-icon {
+          color: #ddd;
+        }
+      }
+      
+      .filter-content {
+        .filter-actions {
+          border-bottom-color: #444;
+          
+          .action-btn {
+            color: #ddd;
+            
+            &:hover {
+              background-color: #333;
+            }
+          }
+        }
+        
+        .genre-chips {
+          mat-selection-list {
+            mat-list-option {
+              background-color: #333;
+              color: #ddd;
+            }
+          }
+        }
+      }
+    }
+  }

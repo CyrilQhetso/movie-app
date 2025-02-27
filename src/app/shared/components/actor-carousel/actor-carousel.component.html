@@ -1,0 +1,44 @@
+<div class="actor-carousel">
+    <h3 class="carousel-title">{{ title }}</h3>
+    
+    <div class="carousel-container" *ngIf="actors && actors.length > 0">
+      <button 
+        class="nav-button prev-button" 
+        (click)="prevSlide()" 
+        [disabled]="!canGoBack()"
+        [class.disabled]="!canGoBack()">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      
+      <div class="actors-container">
+        <div 
+          class="actor-card" 
+          *ngFor="let actor of visibleActors; let i = index" 
+          [@fadeSlide]>
+          <div class="profile-image">
+            <img [src]="utilityService.getProfileUrl(actor.profile_path)" [alt]="actor.name">
+          </div>
+          <div class="actor-details">
+            <h4 class="actor-name">{{ actor.name }}</h4>
+            <p class="character-name">{{ actor.character }}</p>
+          </div>
+        </div>
+        
+        <div class="empty-message" *ngIf="actors.length === 0">
+          <p>No cast information available</p>
+        </div>
+      </div>
+      
+      <button 
+        class="nav-button next-button" 
+        (click)="nextSlide()" 
+        [disabled]="!canGoForward()"
+        [class.disabled]="!canGoForward()">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+    
+    <div class="empty-carousel" *ngIf="!actors || actors.length === 0">
+      <p>No cast information available</p>
+    </div>
+  </div>
