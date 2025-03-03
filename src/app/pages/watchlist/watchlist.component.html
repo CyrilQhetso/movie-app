@@ -1,0 +1,13 @@
+<div class="watchlist-page">
+    <h2>Your Watchlist</h2>
+    <div class="watchlist-items">
+      <!-- Iterate over saved movies/TV shows -->
+      <div *ngFor="let item of watchlist">
+        <app-movie-card *ngIf="item.type === 'movie'" [item]="item"></app-movie-card>
+        <app-tv-show-card *ngIf="item.type === 'tv'" [item]="item"></app-tv-show-card>
+        <!-- Include a button to remove with confirmation -->
+        <button (click)="confirmRemoval(item)">Remove</button>
+      </div>
+    </div>
+    <app-empty-state *ngIf="watchlist.length === 0" message="Your watchlist is empty."></app-empty-state>
+</div>

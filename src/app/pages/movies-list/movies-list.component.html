@@ -1,0 +1,9 @@
+<div class="movies-list-page">
+    <h2>Movies</h2>
+    <input type="text" placeholder="Search movies..." appHighlightSearch />
+    <!-- Display list using movie-card components -->
+    <div class="movies-grid">
+      <app-movie-card *ngFor="let movie of movies" [type]="'movie'" appHighlightSearch></app-movie-card>
+    </div>
+    <app-empty-state *ngIf="movies.length === 0" message="No movies found."></app-empty-state>
+</div>

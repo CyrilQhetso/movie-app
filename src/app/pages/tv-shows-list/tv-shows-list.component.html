@@ -1,0 +1,9 @@
+<div class="tv-shows-list-page">
+    <h2>TV Shows</h2>
+    <input type="text" placeholder="Search TV shows..." appHighlightSearch />
+    <!-- Display list using tv-show-card components -->
+    <div class="tv-shows-grid">
+      <app-tv-show-card *ngFor="let show of tvShows" [type]="'tv'"></app-tv-show-card>
+    </div>
+    <app-empty-state *ngIf="tvShows.length === 0" message="No TV shows found."></app-empty-state>
+</div>

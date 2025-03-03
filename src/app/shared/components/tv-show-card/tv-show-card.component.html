@@ -1,0 +1,38 @@
+<div class="tv-card" 
+     [@fadeIn]
+     [style.--card-accent-color]="colorPalette.primary"
+     [style.--card-light-color]="colorPalette.light"
+     [style.--card-dark-color]="colorPalette.dark">
+  <div class="poster-container">
+    <img [src]="posterUrl" [alt]="title" class="poster-image" (click)="onViewDetails()">
+    <div class="action-buttons">
+      <button class="rating-btn" [style.background-color]="ratingColor">
+        {{ item.vote_avarage | number:'1.1-1' }}
+      </button>
+      <button class="watchlist-btn" (click)="toggleWatchlist()">
+        <mat-icon>{{ isInWatchlist ? 'favorite' : 'favorite_border' }}</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="card-content">
+    <h3 class="card-title" (click)="onViewDetails()">{{ title }}</h3>
+    <p class="release-date">{{ releaseDate }}</p>
+    
+    <div class="user-rating" *ngIf="isInWatchlist">
+      <div class="rating-label">Your Rating:</div>
+      <div class="star-rating">
+        <ng-container *ngFor="let star of [1,2,3,4,5,6,7,8,9,10]">
+          <mat-icon 
+            class="star-icon" 
+            [class.filled]="currentRating >= star"
+            (click)="updateRating(star)"
+            [@scaleIn]="currentRating >= star ? true : false">
+            {{ currentRating >= star ? 'star' : 'star_border' }}
+          </mat-icon>
+        </ng-container>
+      </div>
+    </div>
+    
+    <button class="details-btn" (click)="onViewDetails()">View Details</button>
+  </div>
+</div>
